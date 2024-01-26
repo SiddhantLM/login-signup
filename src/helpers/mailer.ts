@@ -18,9 +18,20 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       });
     }
 
-    var transport = nodemailer.createTransport({
-      host: "live.smtp.mailtrap.io",
-      port: 587,
+    // var transport = nodemailer.createTransport({
+    //   host: "live.smtp.mailtrap.io",
+    //   port: 587,
+    //   auth: {
+    //     user: process.env.MAIL_USER_ID!,
+    //     pass: process.env.MAIL_PASS!,
+    //   },
+    // });
+
+    const transport = nodemailer.createTransport({
+      service: "Gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.MAIL_USER_ID!,
         pass: process.env.MAIL_PASS!,
