@@ -18,9 +18,9 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       });
     }
 
-    var transport = await nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
+    var transport = nodemailer.createTransport({
+      host: "live.smtp.mailtrap.io",
+      port: 587,
       auth: {
         user: process.env.MAIL_USER_ID!,
         pass: process.env.MAIL_PASS!,
@@ -28,7 +28,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
     });
 
     const mailOptions = {
-      from: "siddhant@yahoo.com",
+      from: "login-signup-next.vercel.app",
       to: email,
       subject:
         emailType === "VERIFY" ? "Verify your email" : "Reset your password",
